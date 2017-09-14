@@ -73,27 +73,29 @@ int main() {
           times[t2].pontuacao+=3;
         }
       }
-      for(i=0; i<n; i++) {
-        for(j=0;j<n; j++) {
+      
+
+      // for(i=0; i<n; i++) {
+      //   for(j=0;j<n; j++) {
           
-          if(i>=n) {
-            int k=0, l=0;
-            for(k=0; k<n; k++) {
-              int melhor = 0;
-              int pior = 0;
-              for(l=0; l<n; l++) {
-                if(times[l].pontuacao > times[l].pontuacao) melhor++;
-                else  pior++;
-              }
-              if(times[k].posicao_melhor > melhor+1) times[k].posicao_melhor = melhor+1;
-              if(times[k].posicao_pior > n - pior)  times[k].posicao_pior = (n-pior);
-            }
-          }
-          if(i==j) {
-            j++;
-          }
-        }
-      }
+      //     if(i>=n) {
+      //       int k=0, l=0;
+      //       for(k=0; k<n; k++) {
+      //         int melhor = 0;
+      //         int pior = 0;
+      //         for(l=0; l<n; l++) {
+      //           if(times[l].pontuacao > times[l].pontuacao) melhor++;
+      //           else  pior++;
+      //         }
+      //         if(times[k].posicao_melhor > melhor+1) times[k].posicao_melhor = melhor+1;
+      //         if(times[k].posicao_pior > n - pior)  times[k].posicao_pior = (n-pior);
+      //       }
+      //     }
+      //     if(i==j) {
+      //       j++;
+      //     }
+      //   }
+      // }
       printf("Group #%d", caso);
       printf("\n");
       for(i=0; i<n; i++) {
