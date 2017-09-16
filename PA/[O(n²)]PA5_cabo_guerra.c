@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+// ------- PA 5: CABO DE GUERRA --------- //
+//     Essa solução funciona em O(n²);    //
+// ---------------------------------------// 
+
 int getSize(char *Nome) {
   int i, sum = 0;
   int l = strlen(Nome);
