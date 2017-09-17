@@ -4,22 +4,23 @@
 // ------- PA 5: CABO DE GUERRA --------- //
 //                                        //
 // ---------------------------------------// 
-long long int score[100000];
+long long int score[100005];
 int n;
 
-int getSize(char *Nome) {
-  int i, sum = 0;
+long long int getSize(char *Nome) {
+  int i;
+  long long int sum = 0;
   int l = strlen(Nome);
 
   for (i=0; i<l; i++) {
-    sum += Nome[i];
+    sum += (long long int)Nome[i];
   }
     return sum;
 }
 
-int calcForca(int inicio, int fim, int caso) {
-  int i;
-  int result = 0;
+long long int calcForca(int inicio, int fim, int caso) {
+  int i = 0;
+  long long int result = 0;
   int peso = 1;
   // calcula pontos de B
   if(caso == 1) {
@@ -43,15 +44,15 @@ int findEmpate(int inicio, int fim) {
 
   while(inicio <= fim) {
     meio = (inicio + fim)/2; 
-    int pontosA = calcForca(0, meio, -1);
-    int pontosB = calcForca(meio+1, n-1, 1);
-    
+    long long int pontosA = calcForca(0, meio, -1);
+    long long int pontosB = calcForca(meio+1, n-1, 1);
+
     if(pontosA == pontosB) {
       return meio;
     }
-    else if(pontosA > pontosB) {
-      fim = meio - 1;
-    }
+    // else if(pontosA > pontosB) {
+    //   fim = meio - 1;
+    // }
     else {
       inicio = meio + 1;
     }
@@ -63,8 +64,8 @@ int findEmpate(int inicio, int fim) {
 int main() {
   // variáveis de controle de fluxo:
   int i;
+  
   // casos de teste:
-
   while(scanf("%d", &n) && n != 0) {
     // vetor de nomes;
     char nome[n][11];
@@ -72,7 +73,7 @@ int main() {
     // captura dos nomes dos competidores e as pontuações sem peso
     for(i=0; i<n; i++) {
       scanf("%s", nome[i]);
-      score[i] = (long long int)getSize(nome[i]);
+      score[i] = getSize(nome[i]);
     }
 
     // procurando recursivamente o índice da solução
