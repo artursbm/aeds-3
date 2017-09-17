@@ -5,6 +5,8 @@
 //                                        //
 // ---------------------------------------// 
 long long int score[100000];
+int n;
+
 int getSize(char *Nome) {
   int i, sum = 0;
   int l = strlen(Nome);
@@ -15,22 +17,22 @@ int getSize(char *Nome) {
     return sum;
 }
 
-int calcForca(int inicio, int fim, int index) {
+int calcForca(int inicio, int fim, int caso) {
   int i;
   int result = 0;
-  int pos = 1;
+  int peso = 1;
   // calcula pontos de B
-  if(index == 1) {
+  if(caso == 1) {
     for(i=inicio; i<=fim; i++) {
-      result += score[i]*pos;
-      pos++;
+      result += score[i]*peso;
+      peso++;
     }
   }
   // calcula pontos de A
   else {
     for(i=fim; i>=inicio; i--) {
-      result += score[i]*pos;
-      pos++;
+      result += score[i]*peso;
+      peso++;
     }
   }
   return result;
@@ -41,9 +43,9 @@ int findEmpate(int inicio, int fim) {
 
   while(inicio <= fim) {
     meio = (inicio + fim)/2; 
-    int pontosA = calcForca(inicio, meio, -1);
-    int pontosB = calcForca(meio+1, fim, 1);
-
+    int pontosA = calcForca(0, meio, -1);
+    int pontosB = calcForca(meio+1, n-1, 1);
+    
     if(pontosA == pontosB) {
       return meio;
     }
@@ -62,7 +64,6 @@ int main() {
   // variáveis de controle de fluxo:
   int i;
   // casos de teste:
-  int n;
 
   while(scanf("%d", &n) && n != 0) {
     // vetor de nomes;
