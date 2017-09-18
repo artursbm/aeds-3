@@ -22,16 +22,16 @@ long long int calcForca(int inicio, int fim, int caso) {
   int i = 0;
   long long int result = 0;
   int peso = 1;
-  // calcula pontos de B
+  // calcula força de A
   if(caso == 1) {
-    for(i=inicio; i<=fim; i++) {
+    for(i=fim; i>=inicio; i--) {
       result += score[i]*peso;
       peso++;
     }
   }
-  // calcula pontos de A
-  else {
-    for(i=fim; i>=inicio; i--) {
+  // calcula força de B
+  else if(caso == -1) {
+    for(i=inicio; i<fim; i++) {
       result += score[i]*peso;
       peso++;
     }
@@ -41,14 +41,16 @@ long long int calcForca(int inicio, int fim, int caso) {
 
 int findEmpate(int inicio, int fim) {
   int meio;
-
   while(inicio <= fim) {
     meio = (inicio + fim)/2; 
-    long long int pontosA = calcForca(0, meio, -1);
-    long long int pontosB = calcForca(meio+1, n-1, 1);
+    long long int pontosA = calcForca(0, meio, 1);
+    long long int pontosB = calcForca(meio+1, n, -1);
 
     if(pontosA == pontosB) {
       return meio;
+    }
+    else if(pontosA > pontosB) {
+      fim = meio - 1;
     }
     else {
       inicio = meio + 1;
