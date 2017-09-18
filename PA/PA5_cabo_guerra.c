@@ -4,7 +4,7 @@
 // ------- PA 5: CABO DE GUERRA --------- //
 //                                        //
 // ---------------------------------------// 
-long long int score[100005];
+long long int score[200000];
 int n;
 
 long long int getSize(char *Nome) {
@@ -50,16 +50,12 @@ int findEmpate(int inicio, int fim) {
     if(pontosA == pontosB) {
       return meio;
     }
-    // else if(pontosA > pontosB) {
-    //   fim = meio - 1;
-    // }
     else {
       inicio = meio + 1;
     }
   }
-  return -1;
+  return n+1;
 }
-
 
 int main() {
   // variáveis de controle de fluxo:
@@ -79,7 +75,7 @@ int main() {
     // procurando recursivamente o índice da solução
     int nameIndex = findEmpate(0, n-1);
 
-      if(nameIndex == -1) {
+      if(nameIndex == n+1) {
         printf("Impossibilidade de empate.");
         printf("\n");
       }
@@ -88,7 +84,5 @@ int main() {
         printf("\n");
       }
   }  
-
-
   return 0;
 }
