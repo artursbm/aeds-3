@@ -1,3 +1,4 @@
 *.out
 *.in
 default.c
+*.json
