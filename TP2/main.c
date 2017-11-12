@@ -7,17 +7,26 @@ int main() {
   int N, M;
   // variáveis de controle
   int i;
-  int wgt; //, srcId, destId;
+  int wgt, srcId, destId;
 
   if(scanf("%d", &N) >= 0) {};
   if(scanf("%d", &M) >= 0) {};
-  Vertex* City = newGraph(N);
+  Graph* City;
+  City = newGraph(N);
   
   for(i=1; i<=N; i++) {
     if(scanf("%d", &wgt) >= 0) {};
-    City[i].id = i;
-    City[i].weight = wgt;
+    addWeight(City, wgt, i);
   }
+
+  for(i=1; i<=M; i++) {
+    if(scanf("%d", &srcId) >= 0) {};
+    if(scanf("%d", &destId) >= 0) {};
+    addEdge(City, srcId, destId);
+  }
+
+
+  printGraph(City);
 
 
   return 0;
