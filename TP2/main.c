@@ -13,6 +13,7 @@ int main() {
   if(scanf("%d", &M) >= 0) {};
   Graph* City;
   City = newGraph(N);
+
   
   for(i=1; i<=N; i++) {
     if(scanf("%d", &wgt) >= 0) {};
@@ -25,9 +26,9 @@ int main() {
     addEdge(City, srcId, destId);
   }
 
-
   printGraph(City);
 
+  deleteGraph(City);
 
   return 0;
 }

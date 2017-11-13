@@ -20,15 +20,16 @@ Graph* newGraph(int V) {
 
   // Initialize each adjacency list as empty by making first as NULL
   int i;
-  for (i=1; i<=V; ++i)
+  for (i=1; i<=V; i++) {
     graph->array[i].first = NULL;
-
-  return graph;
+  }
+    return graph;
 }
 
 void addWeight(Graph* graph, int w, int id) {
-  graph->array[id].id = id;
   graph->array[id].weight = w;
+  graph->array[id].id = id;
+  graph->array[id].isValid = 1;
 }
 
 void addEdge(Graph* graph, int src, int dest) {
@@ -57,4 +58,21 @@ void printGraph(Graph* graph) {
 
     printf("\n");
   }
+}
+
+void deleteEdges(Adj* adj) {
+  if(adj->next != NULL) {
+    deleteEdges(adj->next);
+  }
+  free(adj);
+}
+
+void deleteGraph(Graph* graph) {
+  int i;
+  for(i=1; i<=graph->V; i++)  {
+    Adj* adj = graph->array[i].first;
+    deleteEdges(adj);
+  }
+  free(graph->array);
+  free(graph);
 }

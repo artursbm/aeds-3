@@ -9,6 +9,7 @@ typedef struct Adj {
 typedef struct Vertex {
   int id;
   int weight;
+  int isValid;
   Adj *first; // pointer to first node of list
 }Vertex;
 
@@ -26,6 +27,8 @@ void addWeight(Graph* graph, int w, int id);
 void addEdge(Graph* graph, int src, int dest);
  
 void printGraph(Graph* graph);
+
+void deleteGraph(Graph* graph);
 
 // typedef struct Adj {
 //   int id;
