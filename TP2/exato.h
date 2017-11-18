@@ -1,13 +1,12 @@
 #ifndef _H_EXATO
 #define _H_EXATO
 
-typedef struct Set {
-  int id;
-  int weight;
-}Set;
+#include "grafo.h"
 
-// será utilizada uma abordagem de programação dinâmica
-int findMaxDemand(Graph* graph);
-
+// produz todos os tipos de grafos possíveis dados V vértices
+int** makeAllSets(int V);
+// verifica se, dentro do conjunto de todos os grafos, 
+// o grafo i é um conjunto independente de [grafo]
+int isSetIndependent(Graph* grafo, int** allGraphs);
 
 #endif

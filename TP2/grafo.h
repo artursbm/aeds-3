@@ -9,7 +9,6 @@ typedef struct Adj {
 typedef struct Vertex {
   int id;
   int weight;
-  int isValid;
   Adj *first; // pointer to first node of list
 }Vertex;
 

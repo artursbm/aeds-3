@@ -1,6 +1,10 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include "exato.h"
+#include <stdio.h>
+#include "heuristica.h"
+
+
+
+
 
 int main() {
   // número de esquinas (N vértices) e ruas da cidade (M arestas)
@@ -26,9 +30,12 @@ int main() {
     addEdge(City, srcId, destId);
   }
 
+  
+
   printGraph(City);
 
   deleteGraph(City);
+
 
   return 0;
 }

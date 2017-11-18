@@ -29,7 +29,6 @@ Graph* newGraph(int V) {
 void addWeight(Graph* graph, int w, int id) {
   graph->array[id].weight = w;
   graph->array[id].id = id;
-  graph->array[id].isValid = 1;
 }
 
 void addEdge(Graph* graph, int src, int dest) {
