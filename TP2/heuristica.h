@@ -3,6 +3,9 @@
 
 #include "grafo.h"
 
-int approximateVertices(Graph* grafo, unsigned int* sol, int bitMask, int V);
+int pego_melhor(int i, Graph* grafo, int *pode_ta);
+void tira_lixo(int *pode_ta, Graph* grafo, int x);
+int approximateVertices(Graph* grafo, int *pode_ta, int *jata, int V);
+
 
 #endif
