@@ -10,9 +10,9 @@ int findVertices(Graph* grafo, int possibleVert, int V) {
   int nextVert;
   int next;
   int grau;
+
   // Caso base: se nenhum vértice pode 
   // fazer parte do CI, retorna 0
-
   if(possibleVert == 0) {
     return 0;
   }
@@ -37,7 +37,7 @@ int findVertices(Graph* grafo, int possibleVert, int V) {
   
   // abaixo, os condicionais verificam se o grau de um vértice atual
   // é 0, e se for, esse vértice é necessariamente parte da solução.
-  // essa poda realizada reduz a complexidade.
+  // essa poda realizada reduz a complexidade (a ordem exponencial é menor).
   int vertInRes = findVertices(grafo, next, V) + grafo->array[nextVert].weight;
   if(grau == 0) {
     return vertInRes;

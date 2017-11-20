@@ -23,7 +23,7 @@ int main() {
     if(scanf("%d", &destId) >= 0) {};
     addEdge(City, srcId, destId);
   }
-
+  
 	maxDemand = findVertices(City, (1<<N)-1, N);
 	recoverResult(City, (1<<N)-1, &vertices, maxDemand, 0, N);
 
