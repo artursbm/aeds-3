@@ -3,9 +3,9 @@
 
 #include "grafo.h"
 
-int pego_melhor(int i, Graph* grafo, int *pode_ta);
-void tira_lixo(int *pode_ta, Graph* grafo, int x);
-int approximateVertices(Graph* grafo, int *pode_ta, int *jata, int V);
+int selectBiggestVert(int i, Graph* grafo, int *possibleVert);
+void popVert(int *possibleVert, Graph* grafo, int x);
+int approximateVertices(Graph* grafo, int *possibleVert, int *selectedVert, int V);
 
 
 #endif

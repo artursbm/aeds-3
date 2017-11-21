@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "exato.h"
+#include <time.h>
 
 int main() {
   int i;
@@ -23,10 +24,12 @@ int main() {
     if(scanf("%d", &destId) >= 0) {};
     addEdge(City, srcId, destId);
   }
-  
-	maxDemand = findVertices(City, (1<<N)-1, N);
-	recoverResult(City, (1<<N)-1, &vertices, maxDemand, 0, N);
+ 
+  maxDemand = findVertices(City, (1<<N)-1, N);
+ 	recoverResult(City, (1<<N)-1, &vertices, maxDemand, 0, N);
 
+  // __builtin_popcount() conta quantos '1s' tem na máscara de bits "vertices"
+  // parte da biblioteca padrão de C
 	printf("%d %d\n", (int)__builtin_popcount(vertices), maxDemand);
 	for(i=0; i<N; i++) {
 		if((1<<i)&vertices) {

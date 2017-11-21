@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "heuristica.h"
+#include <time.h>
 
 int main() {
   int i;
   int N, M, wgt, srcId, destId;
   int maxDemand;
   int count = 0;
-  int *ta;
-  int *jata;
+  int *possibleVert;
+  int *selectedVert;
     
   if(scanf("%d", &N) >= 0) {};
   if(scanf("%d", &M) >= 0) {};
@@ -16,12 +17,12 @@ int main() {
   City = newGraph(N);
 
   // vértices possíveis e já escolhidos para usar na heurística
-  ta = (int*)malloc(N*sizeof(int));
-  jata = (int*)malloc(N*sizeof(int));
+  possibleVert = (int*)malloc(N*sizeof(int));
+  selectedVert = (int*)malloc(N*sizeof(int));
 
   for(i=0; i<N; i++) {
-    ta[i] = 1;
-    jata[i] = 0;
+    possibleVert[i] = 1;
+    selectedVert[i] = 0;
   }
   
   for(i=0; i<N; i++) {
@@ -35,22 +36,23 @@ int main() {
     addEdge(City, srcId, destId);
   }
   
-  maxDemand = approximateVertices(City, ta, jata, N);
+  maxDemand = approximateVertices(City, possibleVert, selectedVert, N);
+    
   for(i=0; i<N; i++) {
-    if(jata[i]==1) {
+    if(selectedVert[i]) {
       count++;
     }
   }
-  printf("%d %d\n", maxDemand, count);
+  printf("%d %d\n", count, maxDemand);
   for(i=0; i<N; i++) {
-		if(jata[i]==1) {
+		if(selectedVert[i]) {
 			printf("%d ", i+1);
 		}
 	}
   printf("\n");
 
   deleteGraph(City);
-  free(ta);
-  free(jata);
+  free(possibleVert);
+  free(selectedVert);
   return 0;
 }

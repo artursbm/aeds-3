@@ -16,7 +16,7 @@ Graph* newGraph(int V) {
   graph->V = V;
 
   // Create an array of adjacency lists.  Size of array will be V
-  graph->array = (Vertex*)malloc((V+1)*sizeof(Vertex));
+  graph->array = (Vertex*)malloc((V)*sizeof(Vertex));
 
   // Initialize each adjacency list as empty by making first as NULL
   int i;
@@ -69,8 +69,10 @@ void deleteEdges(Adj* adj) {
 void deleteGraph(Graph* graph) {
   int i;
   for(i=0; i<graph->V; i++)  {
-    Adj* adj = graph->array[i].first;
-    deleteEdges(adj);
+    if(graph->array[i].first != NULL) {
+      Adj* adj = graph->array[i].first;
+      deleteEdges(adj);
+    }
   }
   free(graph->array);
   free(graph);

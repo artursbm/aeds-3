@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include "heuristica.h"
 
-int pego_melhor(int i, Graph* grafo, int *pode_ta) {
+int selectBiggestVert(int i, Graph* grafo, int *possibleVert) {
   int auxWgt = grafo->array[i].weight;
   Adj* neighX = grafo->array[i].first;
   while(neighX) {
-    if(pode_ta[neighX->id-1]) {
+    if(possibleVert[neighX->id-1]) {
       if(auxWgt < grafo->array[neighX->id].weight) {
         auxWgt = grafo->array[neighX->id].weight;
         i = neighX->id;
@@ -17,26 +17,25 @@ int pego_melhor(int i, Graph* grafo, int *pode_ta) {
   return i;
 }
 
-void tira_lixo(int *pode_ta, Graph* grafo, int x){
-  pode_ta[x] = 0;
+void popVert(int *possibleVert, Graph* grafo, int x){
+  possibleVert[x] = 0;
   Adj* neighX = grafo->array[x].first;
   while(neighX) {
-    pode_ta[neighX->id-1] = 0;
+    possibleVert[neighX->id-1] = 0;
     neighX = neighX->next;
   }
 }
 
-int approximateVertices(Graph* grafo, int *pode_ta, int *jata, int V) {
+int approximateVertices(Graph* grafo, int *possibleVert, int *selectedVert, int V) {
   int i;
-  // unsigned int id = 0;
   int maxWeight = 0;
   
   for(i=0; i<V; i++) {
-    if(pode_ta[i]){
-      int x = pego_melhor(i, grafo, pode_ta);
-      tira_lixo(pode_ta,grafo, x);
+    if(possibleVert[i]){
+      int x = selectBiggestVert(i, grafo, possibleVert);
+      popVert(possibleVert,grafo, x);
       maxWeight += grafo->array[x].weight;
-      jata[x] = 1;
+      selectedVert[x] = 1;
     }
   }
   return maxWeight;

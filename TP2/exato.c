@@ -17,6 +17,8 @@ int findVertices(Graph* grafo, int possibleVert, int V) {
     return 0;
   }
 
+  // se eu encontro um vértice possível, calculo a demanda nele
+  // ou calculo a solução sem ele
   for(i=0; i<V; i++) {
     if((1<<i)&possibleVert) {
       break;
@@ -35,10 +37,12 @@ int findVertices(Graph* grafo, int possibleVert, int V) {
     neighVert = neighVert->next;
   }
   
+  // Há duas formas de solução: ou o vértice atual está na solução, 
+  // ou ele não pertence à solução.
+  int vertInRes = findVertices(grafo, next, V) + grafo->array[nextVert].weight;
   // abaixo, os condicionais verificam se o grau de um vértice atual
   // é 0, e se for, esse vértice é necessariamente parte da solução.
   // essa poda realizada reduz a complexidade (a ordem exponencial é menor).
-  int vertInRes = findVertices(grafo, next, V) + grafo->array[nextVert].weight;
   if(grau == 0) {
     return vertInRes;
   }
@@ -52,8 +56,7 @@ int findVertices(Graph* grafo, int possibleVert, int V) {
 }
 
 // Método para recuperar a solução correta. Para todas as soluções
-// na árvore de recursão que zerarem a demanda, temos como sendo uma 
-// solução ótima.
+// na árvore de recursão que zerarem a demanda, temos uma solução ótima.
 void recoverResult(Graph* grafo, int possibleVert, int *solution, int demand, int aux, int V) {
   int i;
   int nextVert;
