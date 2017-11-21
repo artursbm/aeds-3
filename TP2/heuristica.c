@@ -9,7 +9,7 @@ int selectBiggestVert(int i, Graph* grafo, int *possibleVert) {
     if(possibleVert[neighX->id-1]) {
       if(auxWgt < grafo->array[neighX->id].weight) {
         auxWgt = grafo->array[neighX->id].weight;
-        i = neighX->id;
+        i = neighX->id-1;
       }
     }
     neighX = neighX->next;
