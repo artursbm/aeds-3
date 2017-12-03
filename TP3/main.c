@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+// #include <time.h>
 #include "matriz.h"
-
+// Programa que executa o algoritmo 2 e imprime o produto das matrizes A e B;
 int main() {
   int i, j;
   int N, bsize;
-  int **A, **B, **C1, **C2;
+  int **A, **B, **C2;
 
   if(scanf("%d", &N) >= 0) {};
   if(scanf("%d", &bsize) >= 0) {};
@@ -30,8 +30,15 @@ int main() {
     }
   }
 
-  C1 = algoritmo1(A, B, N);
   C2 = algoritmo2(A, B, N, bsize);
+
+  // Resultados da multiplicação
+  printResult(C2, N);
+
+  deleteMatrix(A, N);
+  deleteMatrix(B, N);
+  deleteMatrix(C2, N);
+
 
   // PROCEDIMENTO PARA CÁLCULO DE TEMPO DE EXECUÇÃO
   // double time_spent_alg1 = 0;
@@ -63,14 +70,7 @@ int main() {
   //   fclose (pFile);
   // }
   
-  // Resultados da multiplicação em cada algoritmo
-  printResult(C2, N);
-  printf("\n");
 
-  deleteMatrix(A, N);
-  deleteMatrix(B, N);
-  deleteMatrix(C1, N);
-  deleteMatrix(C2, N);
 
   return 0;
 }

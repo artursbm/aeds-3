@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "matriz.h"
-
+// Programa que executa o algoritmo 1 e imprime o produto das matrizes A e B;
 int main() {
   int i, j;
   int N, bsize;
@@ -31,7 +31,8 @@ int main() {
   }
 
   C1 = algoritmo1(A, B, N);
-  
+  printResult(C1, N);
+
   deleteMatrix(A, N);
   deleteMatrix(B, N);
   deleteMatrix(C1, N);
