@@ -69,8 +69,6 @@ int main() {
   //   fprintf(pFile,"======= fim da medição de N=%d, bsize=%d ========\n\n",N, bsize);
   //   fclose (pFile);
   // }
-  
-
 
   return 0;
 }
